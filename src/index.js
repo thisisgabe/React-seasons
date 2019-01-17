@@ -3,14 +3,11 @@ import ReactDOM from "react-dom";
 
 class App extends React.Component {
   //js function, NOT react
-  constructor(props) {
-    //pass props to base class (react.component)
-    //mandatory!!!
-    super(props);
 
-    //this is the ONLY TIME we do direct assignment to this.state
-    this.state = { lat: null, errorMessage: "" };
+  //equivalent to using constructor
+  state = { lat: null, errorMessage: "" };
 
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       position => {
         this.setState({
