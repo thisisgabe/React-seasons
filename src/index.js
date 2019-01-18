@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from "./SeasonDisplay";
+import Spinner from "./Spinner";
 
 class App extends React.Component {
   //js function, NOT react
@@ -25,8 +26,7 @@ class App extends React.Component {
     );
   }
 
-  //we have ot define render!!
-  render() {
+  renderContent() {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     }
@@ -35,7 +35,12 @@ class App extends React.Component {
       return <SeasonDisplay lat={this.state.lat} />;
     }
 
-    return <div>Loading...</div>;
+    return <Spinner />;
+  }
+
+  //we have ot define render!!
+  render() {
+    return <div className="border red">{this.renderContent()}</div>;
   }
 }
 
